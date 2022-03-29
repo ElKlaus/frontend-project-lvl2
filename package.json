@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage"
   },
   "bin": {
     "gendiff": "bin/gendiff.js"
@@ -22,5 +22,8 @@
   "homepage": "https://github.com/ElKlaus/frontend-project-lvl2#readme",
   "dependencies": {
     "commander": "^9.1.0"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
   }
 }

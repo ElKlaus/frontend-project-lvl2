@@ -6,5 +6,9 @@ gendiff: # запуск gendiff.js
 
 publish: # учебная публикация пакета
 	sudo npm publish --dry-run
+
+test:
+	npm test
+
 lint: # запустить линтер
 	npx eslint .
