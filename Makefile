@@ -2,7 +2,7 @@ install: # установить зависимости
 	npm ci
 
 gendiff: # запуск gendiff.js
-	node bin/gendiff.js
+	node bin/index.js
 
 publish: # учебная публикация пакета
 	sudo npm publish --dry-run
