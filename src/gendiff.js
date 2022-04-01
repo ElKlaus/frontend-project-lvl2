@@ -8,7 +8,6 @@ const getParsedArr = (file) => {
   const jsonData = fs.readFileSync(jsonPath, 'utf8');
   const jsonObj = JSON.parse(jsonData);
   const entries = Object.entries(jsonObj);
-  const sortArr = _.sortBy(entries, (item) => item);
 
   // console.log(sortArr);
 
@@ -16,26 +15,32 @@ const getParsedArr = (file) => {
 }
 
 const genDiff = (firstPath, secondPath) => {
-  const firstArr = getParsedArr(firstPath);
-  const secondArr = getParsedArr(secondPath);
-  const keysFirst = Object.keys(firstArr);
-  const keysSecond = Object.keys(secondArr);
+  const firstObj = getParsedArr(firstPath);
+  const secondObj = getParsedArr(secondPath);
+  const keysFirst = Object.keys(firstObj);
+  const keysSecond = Object.keys(secondObj);
   const keys = _.union(keysFirst, keysSecond);
+  const sortKeys = _.sortBy(keys, (item) => item);
+  let result = '{\n';
 
-  // let result = firstArr.map((el) => {
-  //   const [key, value] = el;
+  for (const key of sortKeys) {
+    if ((_.has(firstObj, key) && _.has(secondObj, key)) && (firstObj[key] === secondObj[key])) {
+      result += `    ${key}: ${firstObj[key]}\n`;
+    } else if ((_.has(firstObj, key) && _.has(secondObj, key)) && (firstObj[key] !== secondObj[key])) {
+      result += `  - ${key}: ${firstObj[key]}\n  + ${key}: ${secondObj[key]}\n`;
+    } else if (_.has(firstObj, key) && !(_.has(secondObj, key))) {
+      result += `  - ${key}: ${firstObj[key]}\n`;
+    } else if (!(_.has(firstObj, key) && _.has(secondObj, key))) {
+      result += `  + ${key}: ${secondObj[key]}\n`;
+    }
+  }
   
-  //   console.log(key, value);
-  
-  //   return el;
-  // });
+  result += '}';
 
-  
-
-  console.log(keys);
+  console.log(result);
 
 
-  // console.log(arrForCompare1, arrForCompare2);
+  return result;
 };
 
 
