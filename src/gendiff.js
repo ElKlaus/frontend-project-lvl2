@@ -2,17 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
 
-
 const getParsedArr = (file) => {
   const jsonPath = path.resolve('src', file);
   const jsonData = fs.readFileSync(jsonPath, 'utf8');
   const jsonObj = JSON.parse(jsonData);
-  const entries = Object.entries(jsonObj);
 
-  // console.log(sortArr);
-
-  return jsonObj;  
-}
+  return jsonObj;
+};
 
 const genDiff = (firstPath, secondPath) => {
   const firstObj = getParsedArr(firstPath);
@@ -23,26 +19,26 @@ const genDiff = (firstPath, secondPath) => {
   const sortKeys = _.sortBy(keys, (item) => item);
   let result = '{\n';
 
-  for (const key of sortKeys) {
-    if ((_.has(firstObj, key) && _.has(secondObj, key)) && (firstObj[key] === secondObj[key])) {
-      result += `    ${key}: ${firstObj[key]}\n`;
-    } else if ((_.has(firstObj, key) && _.has(secondObj, key)) && (firstObj[key] !== secondObj[key])) {
-      result += `  - ${key}: ${firstObj[key]}\n  + ${key}: ${secondObj[key]}\n`;
-    } else if (_.has(firstObj, key) && !(_.has(secondObj, key))) {
-      result += `  - ${key}: ${firstObj[key]}\n`;
-    } else if (!(_.has(firstObj, key) && _.has(secondObj, key))) {
-      result += `  + ${key}: ${secondObj[key]}\n`;
+  const comparedKeys = sortKeys.reduce((acc, el) => {
+    let concat = acc;
+
+    if ((_.has(firstObj, el) && _.has(secondObj, el)) && (firstObj[el] === secondObj[el])) {
+      concat += `    ${el}: ${firstObj[el]}\n`;
+    } else if ((_.has(firstObj, el) && _.has(secondObj, el))
+        && (firstObj[el] !== secondObj[el])) {
+      concat += `  - ${el}: ${firstObj[el]}\n  + ${el}: ${secondObj[el]}\n`;
+    } else if (_.has(firstObj, el) && !(_.has(secondObj, el))) {
+      concat += `  - ${el}: ${firstObj[el]}\n`;
+    } else if (!(_.has(firstObj, el) && _.has(secondObj, el))) {
+      concat += `  + ${el}: ${secondObj[el]}\n`;
     }
-  }
-  
-  result += '}';
 
-  console.log(result);
+    return concat;
+  }, '');
 
+  result += `${comparedKeys}}`;
 
   return result;
 };
 
-
-
-export { genDiff };
+export default genDiff;

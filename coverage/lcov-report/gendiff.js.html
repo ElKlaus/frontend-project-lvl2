@@ -39,7 +39,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -106,12 +106,7 @@
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -119,9 +114,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,9 +128,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -146,14 +140,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -161,17 +153,13 @@
 import path from 'path';
 import _ from 'lodash';
 &nbsp;
-&nbsp;
 const getParsedArr = (file) =&gt; {
   const jsonPath = path.resolve('src', file);
   const jsonData = fs.readFileSync(jsonPath, 'utf8');
   const jsonObj = JSON.parse(jsonData);
-  const entries = Object.entries(jsonObj);
 &nbsp;
-  // console.log(sortArr);
-&nbsp;
-  return jsonObj;  
-}
+  return jsonObj;
+};
 &nbsp;
 const genDiff = (firstPath, secondPath) =&gt; {
   const firstObj = getParsedArr(firstPath);
@@ -182,36 +170,36 @@ const genDiff = (firstPath, secondPath) =&gt; {
   const sortKeys = _.sortBy(keys, (item) =&gt; item);
   let result = '{\n';
 &nbsp;
-  for (const key of sortKeys) {
-    if ((_.has(firstObj, key) &amp;&amp; _.has(secondObj, key)) &amp;&amp; (firstObj[key] === secondObj[key])) {
-      result += `    ${key}: ${firstObj[key]}\n`;
-    } else if ((_.has(firstObj, key) &amp;&amp; _.has(secondObj, key)) &amp;&amp; (firstObj[key] !== secondObj[key])) {
-      result += `  - ${key}: ${firstObj[key]}\n  + ${key}: ${secondObj[key]}\n`;
-    } else if (_.has(firstObj, key) &amp;&amp; !(_.has(secondObj, key))) {
-      result += `  - ${key}: ${firstObj[key]}\n`;
-    } else <span class="missing-if-branch" title="else path not taken" >E</span>if (!(_.has(firstObj, key) &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >_.has(secondObj, key))</span>) {
-      result += `  + ${key}: ${secondObj[key]}\n`;
+  const comparedKeys = sortKeys.reduce((acc, el) =&gt; {
+    let concat = acc;
+    if ((_.has(firstObj, el) &amp;&amp; _.has(secondObj, el)) &amp;&amp; (firstObj[el] === secondObj[el])) {
+      concat += `    ${el}: ${firstObj[el]}\n`;
+    } else if ((_.has(firstObj, el) &amp;&amp; _.has(secondObj, el))
+        &amp;&amp; (firstObj[el] !== secondObj[el])) {
+      concat += `  - ${el}: ${firstObj[el]}\n  + ${el}: ${secondObj[el]}\n`;
+    } else if (_.has(firstObj, el) &amp;&amp; !(_.has(secondObj, el))) {
+      concat += `  - ${el}: ${firstObj[el]}\n`;
+    } else <span class="missing-if-branch" title="else path not taken" >E</span>if (!(_.has(firstObj, el) &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >_.has(secondObj, el))</span>) {
+      concat += `  + ${el}: ${secondObj[el]}\n`;
     }
-  }
-  
-  result += '}';
 &nbsp;
-  console.log(result);
+    return concat;
+  }, '');
 &nbsp;
+  result += `${comparedKeys}}`;
 &nbsp;
   return result;
 };
 &nbsp;
-&nbsp;
-&nbsp;
-export { genDiff };</pre></td></tr></table></pre>
+export default genDiff;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Apr 01 2022 17:40:06 GMT+0300 (Moscow Standard Time)
+                at Sat Apr 02 2022 11:35:51 GMT+0300 (Moscow Standard Time)
             </div>
         <script src="prettify.js"></script>
         <script>
