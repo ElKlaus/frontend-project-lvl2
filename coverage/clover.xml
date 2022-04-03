@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1648888551173" clover="3.2.0">
-  <project timestamp="1648888551173" name="All files">
+<coverage generated="1649005695762" clover="3.2.0">
+  <project timestamp="1649005695762" name="All files">
     <metrics statements="26" coveredstatements="26" conditionals="18" coveredconditionals="16" methods="4" coveredmethods="4" elements="48" coveredelements="46" complexity="0" loc="26" ncloc="26" packages="1" files="1" classes="1"/>
     <file name="gendiff.js" path="/mnt/c/OpenServer/domains/frontend-project-lvl2/src/gendiff.js">
       <metrics statements="26" coveredstatements="26" conditionals="18" coveredconditionals="16" methods="4" coveredmethods="4"/>
@@ -19,17 +19,17 @@
       <line num="20" count="1" type="stmt"/>
       <line num="22" count="1" type="stmt"/>
       <line num="23" count="5" type="stmt"/>
-      <line num="24" count="5" type="cond" truecount="5" falsecount="0"/>
-      <line num="25" count="1" type="stmt"/>
-      <line num="26" count="4" type="cond" truecount="5" falsecount="0"/>
-      <line num="28" count="1" type="stmt"/>
-      <line num="29" count="3" type="cond" truecount="4" falsecount="0"/>
-      <line num="30" count="2" type="stmt"/>
-      <line num="31" count="1" type="cond" truecount="2" falsecount="2"/>
-      <line num="32" count="1" type="stmt"/>
-      <line num="35" count="5" type="stmt"/>
-      <line num="38" count="1" type="stmt"/>
-      <line num="40" count="1" type="stmt"/>
+      <line num="25" count="5" type="cond" truecount="5" falsecount="0"/>
+      <line num="26" count="1" type="stmt"/>
+      <line num="27" count="4" type="cond" truecount="5" falsecount="0"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="30" count="3" type="cond" truecount="4" falsecount="0"/>
+      <line num="31" count="2" type="stmt"/>
+      <line num="32" count="1" type="cond" truecount="2" falsecount="2"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="36" count="5" type="stmt"/>
+      <line num="39" count="1" type="stmt"/>
+      <line num="41" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

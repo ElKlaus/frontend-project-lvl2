@@ -2,8 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
 
-const getParsedArr = (file) => {
-  const jsonPath = path.resolve('src', file);
+const getParsedFile = (file) => {
+  const jsonPath = path.resolve('__fixtures__', file);
   const jsonData = fs.readFileSync(jsonPath, 'utf8');
   const jsonObj = JSON.parse(jsonData);
 
@@ -11,8 +11,8 @@ const getParsedArr = (file) => {
 };
 
 const genDiff = (firstPath, secondPath) => {
-  const firstObj = getParsedArr(firstPath);
-  const secondObj = getParsedArr(secondPath);
+  const firstObj = getParsedFile(firstPath);
+  const secondObj = getParsedFile(secondPath);
   const keysFirst = Object.keys(firstObj);
   const keysSecond = Object.keys(secondObj);
   const keys = _.union(keysFirst, keysSecond);
