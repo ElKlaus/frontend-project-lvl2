@@ -38,6 +38,8 @@ const genDiff = (firstPath, secondPath) => {
 
   result += `${comparedKeys}}`;
 
+  console.log(result);
+
   return result;
 };
 

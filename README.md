@@ -9,3 +9,6 @@
 
 ### Test Coverage Badge:
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1c1152a2bbbb36e1eeb1/test_coverage)](https://codeclimate.com/github/ElKlaus/frontend-project-lvl2/test_coverage)
+
+### Steps 3 and 4:
+[![asciicast](https://asciinema.org/a/mjzQ8K8f19AjM0qUGQLEFQ9ZM.svg)](https://asciinema.org/a/mjzQ8K8f19AjM0qUGQLEFQ9ZM)
