@@ -25,3 +25,9 @@ jobs:
         uses: hexlet/project-action@release
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
+
+      - name: Run tests
+        run: make test
+
+      - name: Run lint
+        run: make lint
