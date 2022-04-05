@@ -10,6 +10,10 @@ const data = `{
   + verbose: true
 }`;
 
-test('genDiff', () => {
+test('genDiff - json', () => {
   expect(genDiff('file1.json', 'file2.json')).toBe(data);
+});
+
+test('genDiff - yml', () => {
+  expect(genDiff('file1.yml', 'file2.yml')).toBe(data);
 });

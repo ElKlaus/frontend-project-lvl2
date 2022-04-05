@@ -1,14 +1,5 @@
-import fs from 'fs';
-import path from 'path';
 import _ from 'lodash';
-
-const getParsedFile = (file) => {
-  const jsonPath = path.resolve('__fixtures__', file);
-  const jsonData = fs.readFileSync(jsonPath, 'utf8');
-  const jsonObj = JSON.parse(jsonData);
-
-  return jsonObj;
-};
+import getParsedFile from './parsers.js';
 
 const genDiff = (firstPath, secondPath) => {
   const firstObj = getParsedFile(firstPath);
