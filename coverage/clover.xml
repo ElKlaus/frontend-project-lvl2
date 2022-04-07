@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1649159788293" clover="3.2.0">
-  <project timestamp="1649159788293" name="All files">
+<coverage generated="1649321440039" clover="3.2.0">
+  <project timestamp="1649321440039" name="All files">
     <metrics statements="28" coveredstatements="28" conditionals="20" coveredconditionals="17" methods="4" coveredmethods="4" elements="52" coveredelements="49" complexity="0" loc="28" ncloc="28" packages="1" files="2" classes="2"/>
-    <file name="gendiff.js" path="/mnt/f/domains1/learn_js/hexlet/frontend-project-lvl2/src/gendiff.js">
+    <file name="gendiff.js" path="/mnt/c/OpenServer/domains/frontend-project-lvl2/src/gendiff.js">
       <metrics statements="22" coveredstatements="22" conditionals="18" coveredconditionals="16" methods="3" coveredmethods="3"/>
       <line num="4" count="1" type="stmt"/>
       <line num="5" count="2" type="stmt"/>
@@ -27,7 +27,7 @@
       <line num="32" count="2" type="stmt"/>
       <line num="34" count="2" type="stmt"/>
     </file>
-    <file name="parsers.js" path="/mnt/f/domains1/learn_js/hexlet/frontend-project-lvl2/src/parsers.js">
+    <file name="parsers.js" path="/mnt/c/OpenServer/domains/frontend-project-lvl2/src/parsers.js">
       <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <line num="5" count="1" type="stmt"/>
       <line num="6" count="4" type="stmt"/>
