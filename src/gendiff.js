@@ -10,24 +10,42 @@ const genDiff = (firstPath, secondPath) => {
   const sortKeys = _.sortBy(keys, (item) => item);
   let result = '{\n';
 
-  const comparedKeys = sortKeys.reduce((acc, el) => {
-    let concat = acc;
+  console.log(firstObj);
 
-    if ((_.has(firstObj, el) && _.has(secondObj, el)) && (firstObj[el] === secondObj[el])) {
-      concat += `    ${el}: ${firstObj[el]}\n`;
-    } else if ((_.has(firstObj, el) && _.has(secondObj, el))
-        && (firstObj[el] !== secondObj[el])) {
-      concat += `  - ${el}: ${firstObj[el]}\n  + ${el}: ${secondObj[el]}\n`;
-    } else if (_.has(firstObj, el) && !(_.has(secondObj, el))) {
-      concat += `  - ${el}: ${firstObj[el]}\n`;
-    } else if (!(_.has(firstObj, el) && _.has(secondObj, el))) {
-      concat += `  + ${el}: ${secondObj[el]}\n`;
-    }
 
-    return concat;
-  }, '');
+  const comparedKeys = (coll) => {
+    const res = coll.reduce((acc, el) => {
+      let concat = acc;
 
-  result += `${comparedKeys}}`;
+      console.log(el);
+
+
+
+
+
+      if ((_.has(firstObj, el) && _.has(secondObj, el)) && (firstObj[el] === secondObj[el])) {
+        concat += `    ${el}: ${firstObj[el]}\n`;
+      } else if ((_.has(firstObj, el) && _.has(secondObj, el))
+          && (firstObj[el] !== secondObj[el])) {
+        concat += `  - ${el}: ${firstObj[el]}\n  + ${el}: ${secondObj[el]}\n`;
+      } else if (_.has(firstObj, el) && !(_.has(secondObj, el))) {
+        concat += `  - ${el}: ${firstObj[el]}\n`;
+      } else if (!(_.has(firstObj, el) && _.has(secondObj, el))) {
+        concat += `  + ${el}: ${secondObj[el]}\n`;
+      }
+
+      return concat;
+    }, '');
+
+    return res;
+  };
+
+
+
+
+
+
+  result += `${comparedKeys(sortKeys)}}`;
 
   console.log(result);
 
