@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import getParsedFile from './parsers.js';
 
-const stringlify = (data, replacer = ' ', spacesCount = 1) => {
+const stylish = (data, replacer = ' ', spacesCount = 1) => {
   if (typeof data !== 'object') {
     return `${data}`;
   }
@@ -29,43 +29,38 @@ const stringlify = (data, replacer = ' ', spacesCount = 1) => {
   return result;
 };
 
+const flatPush = (arr, item) => arr.push(_.flatMap(item));
+
 const comparedKeys = (firstObj, secondObj) => {
   const keysFirst = Object.keys(firstObj);
   const keysSecond = Object.keys(secondObj);
   const keys = _.union(keysFirst, keysSecond);
   const sortKeys = _.sortBy(keys, (item) => item);
 
-  const res = sortKeys.reduce((acc, el) => {
-    let concat = acc;
-
+  const diffArr = sortKeys.reduce((acc, el) => {
     if (typeof firstObj[el] === 'object' && typeof secondObj[el] === 'object') {
-      concat += `${el}:${comparedKeys(firstObj[el], secondObj[el])}`;
-    } else if (typeof firstObj[el] === 'object' && typeof secondObj[el] !== 'object') {
-      console.log(firstObj[el]);
-      // concat += stringlify(firstObj[el]);
-    } else if (typeof firstObj[el] !== 'object' && typeof secondObj[el] === 'object') {
-      // concat += stringlify(secondObj[el]);
+      acc.push([el, _.flatMap(comparedKeys(firstObj[el], secondObj[el]))]);
     } else if ((_.has(firstObj, el) && _.has(secondObj, el)) && (firstObj[el] === secondObj[el])) {
-      concat += `    ${el}: ${firstObj[el]}\n`;
-    } else if ((_.has(firstObj, el) && _.has(secondObj, el))
-        && (firstObj[el] !== secondObj[el])) {
-      concat += `  - ${el}: ${firstObj[el]}\n  + ${el}: ${secondObj[el]}\n`;
+      acc.push(['', el, firstObj[el]]);
+    } else if ((_.has(firstObj, el) && _.has(secondObj, el)) && (firstObj[el] !== secondObj[el])) {
+      acc.push(['-', el, firstObj[el]]);
+      acc.push(['+', el, secondObj[el]]);
+    } else if (!(_.has(firstObj, el)) && _.has(secondObj, el)) {
+      acc.push(['+', el, secondObj[el]]);
     } else if (_.has(firstObj, el) && !(_.has(secondObj, el))) {
-      concat += `  - ${el}: ${firstObj[el]}\n`;
-    } else if (!(_.has(firstObj, el) && _.has(secondObj, el))) {
-      concat += `  + ${el}: ${secondObj[el]}\n`;
+      acc.push(['-', el, firstObj[el]]);
     }
 
-    return concat;
-  }, '');
+    return acc;
+  }, []);
 
-  return res;
+  return diffArr;
 };
 
 const genDiff = (firstPath, secondPath) => {
   const parsedOne = getParsedFile(firstPath);
   const parsedTwo = getParsedFile(secondPath);
-  const result = stringlify(parsedOne);/*`{\n${comparedKeys(parsedOne, parsedTwo)}}`;*/
+  const result = comparedKeys(parsedOne, parsedTwo);
 
   console.log(result);
 
