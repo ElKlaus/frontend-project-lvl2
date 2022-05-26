@@ -12,12 +12,10 @@ const stylish = (data, replacer = ' ', spacesCount = 1) => {
       const [sign, key, value] = el;
       let newAcc = '';
 
-      console.log(el, '!!!!!!!!', value);
-
       if (Array.isArray(key)) {
         newAcc = `${acc}${spaces}${sign}**: {\n${iter(key, newSpacesCount)}${spaces}}\n`;
       } else {
-        newAcc = `${acc}${spaces}${sign} ${key}*: ${value}\n`
+        newAcc = `${acc}${spaces}${sign} ${key}*: ${value}\n`;
       }
 
       return newAcc;
@@ -46,8 +44,7 @@ const comparedKeys = (firstObj, secondObj) => {
     } else if (!(_.has(firstObj, el)) && _.has(secondObj, el)) {
       acc.push(['+', el, secondObj[el]]);
     } else if (_.has(firstObj, el) && !(_.has(secondObj, el))) {
-      const current = Object.entries(firstObj[el]);
-      acc.push(['-', el, current]);
+      acc.push(['-', el, firstObj[el]]);
     }
 
     return acc;
