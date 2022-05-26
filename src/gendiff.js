@@ -27,6 +27,23 @@ const stylish = (data, replacer = ' ', spacesCount = 1) => {
   return result;
 };
 
+const objToArr = (data) => {
+  const entries = Object.entries(data);
+  const result = [];
+
+  for (const [key, value] of entries) {
+    if(typeof value === 'object') {
+      result.push([key, objToArr(value)]);
+    } else {
+      result.push([key, value]);
+    }
+  }
+
+  // console.log(stylish(result));
+
+  return result;
+};
+
 const comparedKeys = (firstObj, secondObj) => {
   const keysFirst = Object.keys(firstObj);
   const keysSecond = Object.keys(secondObj);
@@ -42,9 +59,13 @@ const comparedKeys = (firstObj, secondObj) => {
       acc.push(['-', el, firstObj[el]]);
       acc.push(['+', el, secondObj[el]]);
     } else if (!(_.has(firstObj, el)) && _.has(secondObj, el)) {
-      acc.push(['+', el, secondObj[el]]);
+      const current = typeof secondObj[el] === 'object' ? objToArr(secondObj[el]) : secondObj[el];
+
+      acc.push(['+', el, current]);
     } else if (_.has(firstObj, el) && !(_.has(secondObj, el))) {
-      acc.push(['-', el, firstObj[el]]);
+      const current = typeof firstObj[el] === 'object' ? objToArr(firstObj[el]) : firstObj[el];
+
+      acc.push(['-', el, current]);
     }
 
     return acc;
