@@ -1,5 +1,6 @@
 import { test, expect } from '@jest/globals';
 import genDiff from '../src/gendiff.js';
+import stylish from '../src/stylish.js';
 
 const data = `{
     common: {
@@ -47,9 +48,9 @@ const data = `{
 }`;
 
 test('genDiff - json', () => {
-  expect(genDiff('file1.json', 'file2.json')).toBe(data);
+  expect(genDiff('file1.json', 'file2.json', stylish)).toBe(data);
 });
 
 test('genDiff - yml', () => {
-  expect(genDiff('file1.yml', 'file2.yml')).toBe(data);
+  expect(genDiff('file1.yml', 'file2.yml', stylish)).toBe(data);
 });
