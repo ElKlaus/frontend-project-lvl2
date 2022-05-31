@@ -1,6 +1,6 @@
 import { test, expect } from '@jest/globals';
 import genDiff from '../src/gendiff.js';
-import stylish from '../src/stylish.js';
+import stylish from '../formatters/stylish.js';
 
 const data = `{
     common: {
