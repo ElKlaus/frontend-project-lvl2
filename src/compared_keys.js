@@ -2,17 +2,16 @@ import _ from 'lodash';
 
 const objToArr = (data) => {
   const entries = Object.entries(data);
-  const result = [];
-
-  for (const [key, value] of entries) {
+  const result = entries.reduce((acc, el) => {
+    const [key, value] = el;
     if (typeof value === 'object') {
-      result.push([' ', key, objToArr(value)]);
+      acc.push([' ', key, objToArr(value)]);
     } else {
-      result.push([' ', key, value]);
+      acc.push([' ', key, value]);
     }
-  }
 
-  // console.log(stylish(result));
+    return acc;
+  }, []);
 
   return result;
 };
@@ -29,8 +28,6 @@ const comparedKeys = (firstObj, secondObj) => {
     } else if ((_.has(firstObj, el) && _.has(secondObj, el)) && (firstObj[el] === secondObj[el])) {
       acc.push([' ', el, firstObj[el]]);
     } else if ((_.has(firstObj, el) && _.has(secondObj, el)) && (firstObj[el] !== secondObj[el])) {
-      // console.log(firstObj[el], secondObj[el]);
-
       const current1 = typeof firstObj[el] === 'object' && firstObj[el] !== null ? objToArr(firstObj[el]) : firstObj[el];
       const current2 = typeof secondObj[el] === 'object' && secondObj[el] !== null ? objToArr(secondObj[el]) : secondObj[el];
 
