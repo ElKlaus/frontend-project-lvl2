@@ -1,29 +1,25 @@
 const plain = (tree) => {
-  const result = tree.reduce((acc, el) => {
+  const result = tree.reduce((acc, el, index, array) => {
     const [sign, key, value] = el;
+    const [nextSign, nextKey, nextValue] = array[index + 1] ? array[index + 1] : el;
     let newAcc = '';
-    let newSign = '';
 
-    switch (sign) {
-      case '+':
-        newSign = 'was added';
-        break;
-      case '-':
-        newSign = 'was removed';
-        break;
-      case ' ':
-        newSign = 'was updated';
-        break;
-      default: console.log('error');
+    // console.log(sign, key, value);
+    if (sign === '+') {
+      newAcc = `Property '${key}' was added with value: ${value}\n`;
+    } else if (sign === '-') {
+      newAcc = `Property '${key}' was removed\n`;
+    } else if (sign === ' ' && Array.isArray(value)) {
+      newAcc = `Property '${key}'***.${plain(value)}`;
     }
 
-    if (Array.isArray.value) {
-      newAcc = `Property ${acc}${key}${newSign}with value${plain(value)}\n`;
-    } else {
-      newAcc = `Property ${acc}${key}${newSign}with value${value}\n`;
-    }
+    // if (Array.isArray(value)) {
+    //   newAcc = `${acc}${key}***.${plain(value)}`;
+    // } else {
+    //   newAcc = `${acc}${key}* value: ${value}\n`;
+    // }
 
-    return newAcc;
+    return acc + newAcc;
   }, '');
 
   return result;

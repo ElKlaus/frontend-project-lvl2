@@ -76,4 +76,3 @@ test('genDiff - jsonPlain', () => {
 test('genDiff - ymlPlain', () => {
   expect(genDiff('file1.yml', 'file2.yml', plain)).toBe(plainData);
 });
-
