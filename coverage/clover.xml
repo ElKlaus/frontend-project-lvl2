@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1654087236395" clover="3.2.0">
-  <project timestamp="1654087236395" name="All files">
-    <metrics statements="72" coveredstatements="70" conditionals="48" coveredconditionals="43" methods="12" coveredmethods="12" elements="132" coveredelements="125" complexity="0" loc="72" ncloc="72" packages="2" files="5" classes="5"/>
+<coverage generated="1654155347733" clover="3.2.0">
+  <project timestamp="1654155347734" name="All files">
+    <metrics statements="70" coveredstatements="70" conditionals="46" coveredconditionals="43" methods="12" coveredmethods="12" elements="128" coveredelements="125" complexity="0" loc="70" ncloc="70" packages="2" files="5" classes="5"/>
     <package name="formatters">
-      <metrics statements="30" coveredstatements="28" conditionals="10" coveredconditionals="8" methods="5" coveredmethods="5"/>
+      <metrics statements="26" coveredstatements="26" conditionals="12" coveredconditionals="12" methods="5" coveredmethods="5"/>
       <file name="plain.js" path="/mnt/f/domains1/learn_js/hexlet/frontend-project-lvl2/formatters/plain.js">
-        <metrics statements="18" coveredstatements="16" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <metrics statements="14" coveredstatements="14" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="8" type="stmt"/>
-        <line num="4" count="8" type="stmt"/>
-        <line num="5" count="8" type="stmt"/>
-        <line num="7" count="8" type="cond" truecount="3" falsecount="1"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
-        <line num="16" count="4" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="20" count="8" type="cond" truecount="1" falsecount="1"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="23" count="8" type="stmt"/>
-        <line num="26" count="8" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
+        <line num="2" count="10" type="stmt"/>
+        <line num="3" count="44" type="stmt"/>
+        <line num="4" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="44" type="stmt"/>
+        <line num="7" count="44" type="stmt"/>
+        <line num="8" count="44" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="18" type="stmt"/>
+        <line num="10" count="26" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="8" type="stmt"/>
+        <line num="16" count="44" type="stmt"/>
+        <line num="19" count="10" type="stmt"/>
       </file>
       <file name="stylish.js" path="/mnt/f/domains1/learn_js/hexlet/frontend-project-lvl2/formatters/stylish.js">
         <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
@@ -42,41 +38,43 @@
       </file>
     </package>
     <package name="src">
-      <metrics statements="42" coveredstatements="42" conditionals="38" coveredconditionals="35" methods="7" coveredmethods="7"/>
+      <metrics statements="44" coveredstatements="44" conditionals="34" coveredconditionals="31" methods="7" coveredmethods="7"/>
       <file name="compared_keys.js" path="/mnt/f/domains1/learn_js/hexlet/frontend-project-lvl2/src/compared_keys.js">
-        <metrics statements="32" coveredstatements="32" conditionals="36" coveredconditionals="34" methods="5" coveredmethods="5"/>
+        <metrics statements="34" coveredstatements="34" conditionals="32" coveredconditionals="30" methods="5" coveredmethods="5"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="28" type="stmt"/>
-        <line num="5" count="28" type="stmt"/>
-        <line num="6" count="36" type="stmt"/>
-        <line num="7" count="36" type="cond" truecount="2" falsecount="0"/>
-        <line num="8" count="12" type="stmt"/>
-        <line num="10" count="24" type="stmt"/>
-        <line num="13" count="36" type="stmt"/>
-        <line num="16" count="28" type="stmt"/>
+        <line num="4" count="64" type="stmt"/>
+        <line num="5" count="64" type="stmt"/>
+        <line num="6" count="100" type="stmt"/>
+        <line num="7" count="100" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="28" type="stmt"/>
+        <line num="10" count="72" type="stmt"/>
+        <line num="13" count="100" type="stmt"/>
+        <line num="16" count="64" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="20" type="stmt"/>
         <line num="21" count="20" type="stmt"/>
         <line num="22" count="20" type="stmt"/>
         <line num="23" count="72" type="stmt"/>
         <line num="25" count="20" type="stmt"/>
-        <line num="26" count="72" type="cond" truecount="4" falsecount="0"/>
-        <line num="27" count="16" type="stmt"/>
-        <line num="28" count="56" type="cond" truecount="5" falsecount="0"/>
-        <line num="29" count="12" type="stmt"/>
-        <line num="30" count="44" type="cond" truecount="5" falsecount="0"/>
-        <line num="31" count="16" type="cond" truecount="4" falsecount="0"/>
-        <line num="32" count="16" type="cond" truecount="3" falsecount="1"/>
-        <line num="34" count="16" type="stmt"/>
-        <line num="35" count="16" type="stmt"/>
-        <line num="36" count="28" type="cond" truecount="4" falsecount="0"/>
-        <line num="37" count="20" type="cond" truecount="2" falsecount="0"/>
-        <line num="39" count="20" type="stmt"/>
-        <line num="40" count="8" type="cond" truecount="3" falsecount="1"/>
-        <line num="41" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="43" count="8" type="stmt"/>
-        <line num="46" count="72" type="stmt"/>
-        <line num="49" count="20" type="stmt"/>
+        <line num="26" count="72" type="stmt"/>
+        <line num="27" count="72" type="stmt"/>
+        <line num="28" count="72" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="72" type="cond" truecount="4" falsecount="0"/>
+        <line num="32" count="16" type="stmt"/>
+        <line num="33" count="56" type="cond" truecount="5" falsecount="0"/>
+        <line num="34" count="12" type="stmt"/>
+        <line num="35" count="44" type="cond" truecount="5" falsecount="0"/>
+        <line num="36" count="16" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="16" type="cond" truecount="1" falsecount="1"/>
+        <line num="39" count="16" type="stmt"/>
+        <line num="40" count="16" type="stmt"/>
+        <line num="41" count="28" type="cond" truecount="4" falsecount="0"/>
+        <line num="42" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="44" count="20" type="stmt"/>
+        <line num="45" count="8" type="cond" truecount="3" falsecount="1"/>
+        <line num="46" count="8" type="stmt"/>
+        <line num="49" count="72" type="stmt"/>
+        <line num="52" count="20" type="stmt"/>
       </file>
       <file name="gendiff.js" path="/mnt/f/domains1/learn_js/hexlet/frontend-project-lvl2/src/gendiff.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>

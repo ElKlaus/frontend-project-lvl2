@@ -23,24 +23,27 @@ const comparedKeys = (firstObj, secondObj) => {
   const sortKeys = _.sortBy(keys, (item) => item);
 
   const diffArr = sortKeys.reduce((acc, el) => {
-    if (typeof firstObj[el] === 'object' && typeof secondObj[el] === 'object') {
-      acc.push([' ', el, (comparedKeys(firstObj[el], secondObj[el]))]);
-    } else if ((_.has(firstObj, el) && _.has(secondObj, el)) && (firstObj[el] === secondObj[el])) {
-      acc.push([' ', el, firstObj[el]]);
-    } else if ((_.has(firstObj, el) && _.has(secondObj, el)) && (firstObj[el] !== secondObj[el])) {
-      const current1 = typeof firstObj[el] === 'object' && firstObj[el] !== null ? objToArr(firstObj[el]) : firstObj[el];
-      const current2 = typeof secondObj[el] === 'object' && secondObj[el] !== null ? objToArr(secondObj[el]) : secondObj[el];
+    const crntFrst = firstObj[el];
+    const crntScnd = secondObj[el];
+    const chkdFrst = _.isObject(crntFrst) ? objToArr(crntFrst) : crntFrst;
+    // const chkdScnd = _.isObject(crntScnd) && crntScnd !== null ? objToArr(crntScnd) : crntScnd;
+
+    if (_.isObject(crntFrst) && _.isObject(crntScnd)) {
+      acc.push([' ', el, (comparedKeys(crntFrst, crntScnd))]);
+    } else if ((_.has(firstObj, el) && _.has(secondObj, el)) && (crntFrst === crntScnd)) {
+      acc.push([' ', el, crntFrst]);
+    } else if ((_.has(firstObj, el) && _.has(secondObj, el)) && (crntFrst !== crntScnd)) {
+      const current1 = _.isObject(crntFrst) ? objToArr(crntFrst) : crntFrst;
+      const current2 = _.isObject(crntScnd) ? objToArr(crntScnd) : crntScnd;
 
       acc.push(['-', el, current1]);
       acc.push(['+', el, current2]);
     } else if (!(_.has(firstObj, el)) && _.has(secondObj, el)) {
-      const current = typeof secondObj[el] === 'object' ? objToArr(secondObj[el]) : secondObj[el];
+      const current = _.isObject(crntScnd) ? objToArr(crntScnd) : crntScnd;
 
       acc.push(['+', el, current]);
     } else if (_.has(firstObj, el) && !(_.has(secondObj, el))) {
-      const current = typeof firstObj[el] === 'object' ? objToArr(firstObj[el]) : firstObj[el];
-
-      acc.push(['-', el, current]);
+      acc.push(['-', el, chkdFrst]);
     }
 
     return acc;
